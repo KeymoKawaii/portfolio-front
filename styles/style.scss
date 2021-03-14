@@ -1,0 +1,522 @@
+// ======================= SOMMAIRE =============================
+
+//                     1 - ROOT
+//                     2 - NAV
+//                     3 - HEADER
+//                     4 - ABOUT
+//                     5 - PORTFOLIO
+//                     6 - MODAL
+//                     7 - EXPÉRIENCES
+//                     8 - CONTACTS
+
+//==============================================================
+
+
+// ======================= ROOT =============================
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--main-white);
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--purple);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--main-black);
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--second-black);
+  }
+}
+
+:root {
+    --main-white: #dde7ee;
+    --main-black: #00182f;
+    --second-black: #0c0c0c;
+    --purple: #b45896;
+    --blue: #4e4a93;
+    --main-gradient: linear-gradient(90deg, rgba(180,88,150,1) 0%, rgba(78,74,147,1) 100%);
+}
+
+h2{
+    font-size: 50px;
+    color: var(--main-black);
+  }
+  
+p{
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+    font-size:18px;
+    color: var(--second-black);
+  }
+  
+section{
+    width:90%;
+    max-width:1100px;
+    margin: auto; 
+  }
+  
+a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+// ======================= ROOT =============================
+
+// ======================= NAV =============================
+
+  nav{
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #dde7ee;
+    z-index: 4;
+    border-bottom: solid 3px var(--purple);
+    ul{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 50%;
+      min-width: 270px;
+      margin: auto;
+      height: 100%;
+      padding-left: 0px;
+    }
+    a{
+      margin: auto;
+      position: relative;
+      &::after{
+        content: "";
+        position: absolute;
+        width: 20%;
+        height: 2px;
+        border-radius: 5px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--purple);
+        transition: 0.3s all;
+      }
+      &:hover::after{
+        width: 100%;
+      }
+    }
+  }
+// ======================= NAV =============================
+
+// ======================= HEADER =============================
+header{
+  background: url("../public/img/background.png");
+  background-size: cover;
+  z-index: 5;
+  height: 80vh;
+  color: var(--main-white);
+  font-size: 25px;
+  animation: move 5s infinite reverse linear;
+  position: relative;
+  z-index: 1;
+  .link{
+      display: block;
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%, -0%);
+      background-size: contain;
+      background-position: center;
+      background-image: url("../public/img/arrow-down-sign-to-navigate.svg");
+      animation: arrow 4s 1s infinite;
+  }
+  div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+  h1{
+    text-align: center;
+    position: relative;
+    animation: fadeTitle 2s 1s both;
+    &::after{
+      content: " ";
+      height: 5px;
+      margin: auto;
+      background-color: var(--main-white);
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      bottom: -35px;
+      animation: fadeLine 2s 1s both;
+    }
+  }
+  h2{
+      font-size: 60px;
+      text-align: center;
+      color: var(--main-white);
+      animation: fadeSubtitle 2s 1s both;
+    }
+  img{
+    width: 50%;
+    height: 80vh;
+    object-fit: cover;
+    z-index: 2;
+  }
+}
+
+@keyframes arrow{
+  0%{
+    bottom: 40px;
+  }
+  50%{
+    bottom: 20px;
+  }100%{
+    bottom: 40px;
+  }
+}
+
+@keyframes fadeLine{
+  from{
+    opacity: 0;
+    width: 0%;
+  }
+  to{
+    opacity: 1;
+    width: 80%;
+  }
+}
+@keyframes fadeTitle{
+  from{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(-0px);
+  }
+}
+@keyframes fadeSubtitle{
+  from{
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(-0px);
+  }
+}
+// ======================= HEADER =============================
+
+// ======================= ABOUT =============================
+
+  #about{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 88vh;
+    .text{
+        width: 35%;
+        min-width:270px;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding: 20px 20px 20px 20px;
+        border-radius: 10px;
+        position: relative;
+        margin: auto;
+        overflow: visible;
+      }
+      .text:after{
+        content: "//";
+          position: absolute;
+          bottom: 0;
+          right: 20px;
+          font-size: 150px;
+          font-weight: 500;
+          transform: scale(1.5, 1);
+          letter-spacing: -20px;
+          color: var(--purple);
+          z-index: 0;
+          opacity: 0.5;
+        }
+      .react-reveal{
+        width: 50%;
+        min-width:270px;
+        height: 400px;
+        margin: 0 auto;
+        margin-bottom: 5vh;
+      }img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+  }
+
+// ======================= ABOUT =============================
+
+// ======================= PORTFOLIO =========================
+
+#portfolio{
+  background: var(--main-gradient);
+  min-width: 100%;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  > div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 9vh;
+    >h2{
+      width: 100%;
+    padding-bottom: 5vh;
+    color: var(--main-white);
+    }
+    article{
+      width: 300px;
+      margin: auto;
+      height: 320px;
+      margin-bottom: 60px;
+      display: block;
+      padding: 0 10% 0 10;
+      background: rgba( 255, 255, 255, 0.25 );
+      box-shadow: 0 4px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 4px );
+      border-radius: 7px;
+      transition: 0.3s all;
+      overflow: hidden;
+      div{
+            padding: 10px 20px 20px 20px;
+      }
+      h2{
+        font-size: 20px;
+      }
+      &:hover{
+        transform: translateY(-5px);
+        cursor: pointer;
+      }
+    }
+    img{
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.ReactModal__Overlay{
+  z-index: 10;
+}
+
+.ReactModal__Content{
+  padding: 0!important;
+  background: rgba( 255, 255, 255, 0.35 ) !important;
+  box-shadow: 0 4px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8px ) !important;
+  border-radius: 7px !important;
+  padding-bottom: 5vh !important;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--purple);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--main-black);
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--second-black);
+  }
+  h1{
+    font-size: 50px;
+  }
+  h2{
+    font-size: 30px
+  }
+  img{
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    object-position: center;
+  }
+  .container{
+    max-width: 1100%;
+    width: 90%;
+    margin: auto;
+  }
+  a{
+    text-decoration: underline;
+  }
+  p{
+    font-weight: 500;
+  }
+  span{
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    color: var(--main-white);
+    font-weight: 700;
+    background-color: rgba(0, 29, 56, 0.3);
+    padding: 5px 10px 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s all;
+    &:hover{
+      background-color: rgba(0, 29, 56, 0.7);
+      color: white;
+    }
+  }
+}
+// ======================= PORTFOLIO =========================
+
+// ======================= FORMATION =========================
+
+#formation{
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  h2{
+    padding-bottom: 5vh;
+  }
+  >div{
+    div{
+      position: relative;
+      background: var(--main-gradient);
+      color: var(--main-white);
+      padding: 10px 30px;
+      margin-bottom: 10vh;
+      border-radius: 10px;
+      p{
+        color: var(--main-white);
+      }
+    }
+  }
+}
+
+// ======================= FORMATION =========================
+// ======================= CONTACT =========================
+
+.darkContainer{
+  width: 100%;
+  background: url('../public/img/background.png');
+  animation: move 10s infinite reverse linear;
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+}
+#contact{
+  >div{
+    padding: 5vh 4% 5vh 4%;
+    background: var(--main-gradient);
+    border-radius: 20px;
+    width: 90%;
+    margin: auto;
+    min-width: 300px;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    h2{
+      font-size: 26px;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--main-white);
+    }
+    label{
+      font-size: 16px;
+      color: var(--main-white);
+      font-weight: 500;
+      margin-bottom: 1vh;
+    }
+    input, textarea{
+      margin-bottom: 3vh;
+      border-radius: 5px;
+      border:none;
+      background: rgba( 255, 255, 255, 0.35 ) !important;
+      box-shadow: 0 4px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 8px ) !important;
+    }
+    input{
+      height: 40px;
+    }
+    textarea{
+      height: 15vh;
+    }
+    input:focus, textarea:focus{
+      outline: none;
+      background: rgba( 255, 255, 255, 0.35 ) !important;
+      box-shadow: 0 4px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 8px ) !important;
+    }
+    button{
+      width: 150px;
+      border-radius: 7px;
+      font-size: 16px;
+      color: var(--main-white);
+      background-color: var(--main-black);
+      font-weight: 500;
+      border: none;
+      padding: 7px 10px 7px 10px;
+    }
+  }
+}
+
+// ======================= CONTACT =========================
+
+// ======================= FOOTER =========================
+
+footer{
+  background-color: var(--main-black);
+  padding: 10px 0;
+  color: var(--main-white);
+  border-top: var(--main-white) 1px solid;
+  div{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 40%;
+    min-width: 270px;
+    margin: auto;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 200;
+  }
+  a{
+    text-decoration: underline;
+  }
+  p{
+    color: var(--main-white);
+    letter-spacing: inherit;
+    line-height: inherit;
+    font-size: inherit;
+  }
+}
+
+// ======================= FOOTER =========================
+
+@keyframes move{
+  from{ background-position: left top; }
+  to  { background-position: right bottom; }
+}
+
+// ============== MENTIONS LÉGALES ================
+#ML{
+  max-width: 1100px;
+  width: 90%;
+  margin: auto;
+  margin-top: 80px;
+}
+// ============== MENTIONS LÉGALES ================
