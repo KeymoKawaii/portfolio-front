@@ -1,3 +1,4 @@
+import App from 'next/app';
 import '../styles/style.min.css'
 import Head from "next/head";
 import { createContext } from "react";
@@ -21,10 +22,13 @@ const MyApp = ({ Component, pageProps }) => {
   );
 };
 
-MyApp.getStaticProps = async () => {
+MyApp.getStaticProps = async (ctx) => {
+  // Calls page's `getInitialProps` and fills `appProps.pageProps`
+  const appProps = await App.getStaticProps(ctx);
+  // Fetch global site settings from Strapi
   const global = await fetchAPI("/global");
   // Pass the data to our page via props
-  return { pageProps: { global } };
+  return { ...appProps, pageProps: { global } };
 };
 
 export default MyApp
