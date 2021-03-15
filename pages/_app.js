@@ -21,7 +21,7 @@ const MyApp = ({ Component, pageProps }) => {
   );
 };
 
-MyApp.getInitialProps = async () => {
+MyApp.getStaticProps = async () => {
   const global = await fetchAPI("/global");
   // Pass the data to our page via props
   return { pageProps: { global } };
